@@ -1,0 +1,103 @@
+// Imports
+import java.util.Scanner;
+
+public class MyProgram
+{
+    // Variables
+    private static int min = 1;
+    private static int max;
+    private static int guesses = 0;
+    private static int guessLimit;
+    private static int num;
+    private static Scanner scan = new Scanner (System.in);
+    
+    public static void main(String[] args)
+    {
+        do
+        {
+            game();
+        } 
+        while (playAgain);
+        endScreen();
+    }
+    
+    public static void game() throws InterruptedException
+    {
+        difficulty();
+        num = (int) (Math.random() * max) + min;
+        
+        while (guesses < guessLimit)
+        {
+            
+        }
+        s("Guess a number from " + min + " to " + max + ": ");
+        String userInput = scan.nextInt();
+        guesses++;
+        if (userInput = num && guesses == 1)
+        {
+            s("Wait what. ");
+            Thread.sleep(1500);
+            s("How'd you get it first try. ");
+        }
+        else if (userInput > num)
+        {
+            s("The number is lower than your guess. ");
+        }
+    }
+    
+    public static void difficulty()
+    {
+        s("What difficulty would you like to play with? (e / m / h / i)");
+        s("Easy: 1 - 10");
+        s("Medium: 1 - 100");
+        s("Hard: 1 - 1000");
+        s("Input: Any");
+        String scanAnswer = scan.nextLine();
+        char difficulty = scanAnswer.charAt(0).toUpperCase();
+        
+        if (difficulty == 'E')
+        {
+            max = 10;
+        }
+        else if (difficulty == 'M')
+        {
+            max = 100;
+        }
+        else if (difficulty = 'H')
+        {
+            max = 1000;
+        }
+        else if (difficulty = 'I')
+        {
+            s("Input the minimum: ");
+            min = scan.nextInt();
+            
+            s("Input the maximum: ");
+            max = scan.nextInt();
+        }
+        else
+        {
+            s("Invalid input. Try again. ");
+            difficulty();
+        }
+    }
+    
+    public static void endScreen()
+    {
+        s("The number was " + number + "!");
+        
+    }
+    
+    public static boolean playAgain()
+    {
+        String answer = scan.nextLine();
+        char result = answer.toUpperCase().charAt(0);
+        return (result == 'Y');
+    }
+    
+    // System.out.println shortcut for text
+    public static void s(String text)
+    {
+        System.out.println(text);
+    }
+}
